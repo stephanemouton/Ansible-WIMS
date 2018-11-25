@@ -1,0 +1,7 @@
+# Variables to select WIMS version
+  wims_url: https://sourcesup.renater.fr/frs/download.php/file/5627/
+  wims_package : wims-4.16.tgz
+  ip_webmaster : xx.xx.xx.xx
+# TODO: use vault to avoid hardcode and viewable values!
+  email_webmaster : myemail@fqdn.com
+  password_webmaster : mypassword

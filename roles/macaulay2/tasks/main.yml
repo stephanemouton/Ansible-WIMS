@@ -1,0 +1,16 @@
+# Install macaulay 2
+- name: Import key of macaulay repository
+  apt_key:
+    url: https://faculty.math.illinois.edu/Macaulay2/PublicKeys/Macaulay2-key
+
+- name: Add macaulay repository
+  apt_repository:
+    repo: deb https://faculty.math.illinois.edu/Macaulay2/Repositories/Debian stretch main
+    update_cache: yes
+    state: present
+
+- name: Now, install macaulay 2
+  apt:
+    name: macaulay2
+    state: latest
+

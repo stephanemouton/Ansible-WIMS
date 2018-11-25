@@ -1,0 +1,7 @@
+- name: Ensure base configuration of the server
+  hosts: wims
+  user: root
+  become: yes
+  roles:
+   - base_apps
+   - base_security

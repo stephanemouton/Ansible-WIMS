@@ -1,0 +1,41 @@
+  base_packages:
+  - apache2
+  - make
+  - g++
+  - texlive-base
+  - gnuplot
+  - pari-gp
+  - units-filter
+  - flex
+  - bison
+  - perl
+  - liburi-perl
+  - libwebservice-validator-html-w3c-perl
+  - imagemagick
+  - libgd-dev
+  - wget
+  - bc
+  - yacas
+  - gap
+  - maxima
+  - octave
+  - graphviz
+  - ldap-utils
+  - qrencode
+  - fortune
+  - unzip
+  - libgmp-dev
+  - openbabel
+  - scilab
+  - scilab-cli
+  - apt-transport-https
+# added according to information form administration page
+  - chemeq
+
+  useful_packages:
+  - glances
+  - joe
+  - apachetop
+  - neofetch
+# Required by Ansible expect module
+  - python3-pexpect

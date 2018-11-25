@@ -1,0 +1,6 @@
+- name: Install main application, as wims user
+  hosts: wims
+  user: wims
+  become: no
+  roles:
+  - wims_install_wims

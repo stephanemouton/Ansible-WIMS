@@ -1,0 +1,8 @@
+- name: Deploy applications used by WIMS
+  hosts: wims
+  user: root
+  become: yes
+  roles:
+   - povray
+   - macaulay2
+   - perl_wims

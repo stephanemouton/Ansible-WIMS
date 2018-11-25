@@ -1,0 +1,13 @@
+# Add Packages from default repositories needed by WIMS
+- name: Include default variables
+  include_vars: default.yml
+
+- name: Install prerequisite packages for WIMS
+  apt:
+    name: "{{ base_packages }}"
+    state: latest
+
+- name: Install a few (more or less) important packages
+  apt:
+    name: "{{ useful_packages }}"
+    state: latest

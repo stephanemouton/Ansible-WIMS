@@ -1,0 +1,40 @@
+# Intall core WIMS application as wims user
+- name: Include default variables
+  include_vars: default.yml
+
+- name: "Download WIMS: {{ wims_package }}"
+  get_url:
+    url: "{{ wims_url }}{{ wims_package }}"
+    dest: /home/wims
+
+- name: "Extract {{ wims_package }} into /home/wims"
+  unarchive:
+    src: "/home/wims/{{ wims_package }}"
+    dest: /home/wims
+    remote_src: yes
+
+- name: "Install WIMS"
+# According to https://stackoverflow.com/questions/38264206/how-to-process-a-command-asking-for-inputs-with-an-ansible-task
+  expect :
+    command:  ./compile --mathjax --jmol --modules --geogebra --swac
+    chdir: /home/wims
+    timeout: null
+    responses:
+      IP: "{{ip_webmaster}}"
+      email: "{{email_webmaster}}"
+      password: "{{password_webmaster}}"
+
+- name: "Set values directly in file: password"
+  template: src=wimspass.j2 dest=/home/wims/log/.wimspass owner=wims group=wims mode=0600
+
+- name: "Set values directly in file: IP administrator"
+  lineinfile:
+    path: /home/wims/log/wims.conf
+    regexp: '^manager_site='
+    line: 'manager_site={{ip_webmaster}}'
+
+- name: "Set values directly in file: e-mail administrator"
+  lineinfile:
+    path: /home/wims/log/wims.conf
+    regexp: '^site_manager='
+    line: 'site_manager={{email_webmaster}}'

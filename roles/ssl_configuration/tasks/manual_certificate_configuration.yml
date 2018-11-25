@@ -1,0 +1,6 @@
+# For now, Let's encrypt installation is not automated
+- name: Include default variables
+  include_vars: default.yml
+
+- name: "now type locally certbot --apache -d {{ site_server_name }}"
+  command: echo "certbot --apache -d {{ site_server_name }}"

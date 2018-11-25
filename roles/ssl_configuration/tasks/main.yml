@@ -1,0 +1,24 @@
+# Enable HTTPS communication
+# As usual, Digital Ocean is of good adive for no nonsense procedures
+# https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-debian-9
+- name: Include default variables
+  include_vars: default.yml
+
+- name: Add Certbot repository
+  apt_repository:
+    repo: deb http://ftp.debian.org/debian stretch-backports main
+    update_cache: yes
+    state: present
+
+- name: Install Certbot
+  apt:
+    name: python-certbot-apache
+    state: latest
+    default_release: stretch-backports
+    update_cache: yes
+
+- name: Manually configure certificates if not done previously
+  stat: path=/etc/letsencrypt/live/{{ site_server_name }}/fullchain.pem
+  register: certificate
+- include: manual_certificate_configuration.yml
+  when: certificate.stat.exists is defined and certificate.stat.exists == false

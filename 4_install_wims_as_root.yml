@@ -1,0 +1,6 @@
+- name: Install main application, as root user
+  hosts: wims
+  user: root
+  become: yes
+  roles:
+  - wims_install_root

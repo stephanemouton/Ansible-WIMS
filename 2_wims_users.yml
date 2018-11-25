@@ -1,0 +1,7 @@
+- name: Create users and share credentials to enable ansible script to run under wims
+  hosts: wims
+  user: root
+  become: yes
+  roles:
+   - users
+   - wims_credentials

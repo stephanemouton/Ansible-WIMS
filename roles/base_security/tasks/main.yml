@@ -1,0 +1,27 @@
+# Setup basic security
+# Based on good practices by Digital Ocean: https://www.digitalocean.com/community/tutorials/initial-server-setup-with-debian-9#step-four-%E2%80%94-setting-up-a-basic-firewall
+- name: Include default variables
+  include_vars: default.yml
+
+- name: Install firewall and other security applications
+  apt:
+    name: "{{ security_packages }}"
+    state: latest
+
+- name: Enable and start Firewall
+  systemd:
+    name: ufw
+    enabled: yes
+    state: started
+
+- name: Configure Firewall
+  ufw:
+    rule: allow
+    port: "{{ item }}"
+    proto: tcp
+  loop: "{{ authorized_tcp_ports }}"
+
+- name: Enable firewall to take rules into account
+  ufw:
+    state: enabled
+    policy: reject

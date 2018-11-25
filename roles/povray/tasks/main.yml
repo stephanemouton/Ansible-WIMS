@@ -1,0 +1,17 @@
+# Install povray
+- name: Add povray repository
+  apt_repository:
+    repo: deb http://ftp.fr.debian.org/debian/ oldstable main non-free contrib
+    update_cache: yes
+    state: present
+
+- name: Now, install povray
+  apt:
+    name: povray
+    state: latest
+
+- name: Configure povray to allow to store images in WIMS directory
+  lineinfile:
+    path: /etc/povray/3.7/povray.conf
+    line: read+write* = /home/wims/tmp/sessions
+    insertafter: [Permitted Paths]

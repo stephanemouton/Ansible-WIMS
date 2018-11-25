@@ -1,0 +1,7 @@
+- name: Add web site configuration and SSL support
+  hosts: wims
+  user: root
+  become: yes
+  roles:
+  - wims_welcome_site
+  - ssl_configuration

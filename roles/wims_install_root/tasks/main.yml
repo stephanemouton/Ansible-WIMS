@@ -1,0 +1,30 @@
+# Intall core WIMS application as root user
+- name: Set rights
+  command: ./bin/setwrapexec
+  args:
+    chdir: /home/wims
+
+- name: Prepare WIMS daemon
+  command: ./bin/setwimsd
+  args:
+    chdir: /home/wims
+
+- name: Configure Apache
+  command: ./bin/apache-config
+  args:
+    chdir: /home/wims
+
+- name: Activate Apache CGI module
+# set to *cgid* because of the following warning: "Your MPM seems to be threaded. Selecting cgid instead of cgi."
+# instead of 'a2enmod cgi'
+#  apache2_module:
+#    state: present
+#    name: cgid
+# There seems to be a problem with apache2_module, therefore a2enmod command is still used
+  command: a2enmod cgid
+
+- name: Reload Apache to take modifications into account
+  systemd:
+    name: apache2
+    enabled: yes
+    state: restarted

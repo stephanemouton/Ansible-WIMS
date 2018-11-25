@@ -1,0 +1,3 @@
+# variables for WIM welcome site
+  site_server_name: "www.mydomainname.com"
+  site_admin_email: "myemail@fqdn.com"

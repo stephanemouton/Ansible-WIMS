@@ -1,0 +1,18 @@
+# Copy root credentials to wims user
+- name: Create wims ssh directory
+  file:
+    path: /home/wims/.ssh
+    state: directory
+    group: wims
+    owner: wims
+    mode: 0700
+
+- name: copy authorized_keys2 file
+  copy:
+    src: /root/.ssh/authorized_keys2
+    dest: /home/wims/.ssh
+    remote_src: yes
+    group: wims
+    owner: wims
+    mode: 0644
+

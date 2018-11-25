@@ -1,0 +1,16 @@
+#
+# configuration file for welcome site of WIMS
+#
+<VirtualHost *:80>
+    ServerName {{site_server_name}}
+    ServerAdmin {{site_admin_email}}
+
+    DocumentRoot /var/www/html/{{site_server_name}}
+    <Directory /var/www/html/{{site_server_name}}>
+        AllowOverride None
+        Require all granted
+    </Directory>
+
+    ErrorLog /var/log/apache2/{{site_server_name}}.log
+    CustomLog /var/log/apache2/{{site_server_name}}.log combined
+</VirtualHost>

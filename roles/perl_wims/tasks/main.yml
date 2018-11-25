@@ -1,0 +1,10 @@
+# install perl prerequisites using CPAN
+# cf https://stackoverflow.com/questions/898782/how-do-i-tell-cpan-to-install-all-dependencies
+- name: Enable automatic CPAN first configuration'
+#  command: perl -MCPAN -Mlocal::lib=~/perl5 -e 'my $c = "CPAN::HandleConfig"; $c->load(doit => 1, autoconfig => 1); $c->edit(prerequisites_policy => "follow"); $c->edit(build_requires_install_policy => "yes"); $c->commit'
+  command: perl -MCPAN -e 'my $c = "CPAN::HandleConfig"; $c->load(doit => 1, autoconfig => 1); $c->edit(prerequisites_policy => "follow"); $c->edit(build_requires_install_policy => "yes"); $c->commit'
+
+- name: perl -MCPAN -e 'install WebService::Validator::HTML::W3C'
+  command: perl -MCPAN -e 'install WebService::Validator::HTML::W3C'
+  register: out
+

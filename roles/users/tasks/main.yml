@@ -1,0 +1,14 @@
+# Create WIMS user to run application as well as a script user for safety
+# Add normal user 'script' with sudo power with a bash shell
+- name: Create a login user
+  user:
+    name: script
+    groups:
+      - sudo
+    state: present
+
+# Add user 'wims' for for main application
+- name: Create wims user
+  user:
+    name: wims
+    state: present

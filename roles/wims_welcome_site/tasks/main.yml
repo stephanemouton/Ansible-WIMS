@@ -1,0 +1,23 @@
+# Set Apache configuration out of the one done in WIMS
+- name: Include default variables
+  include_vars: default.yml
+
+- name: Create directory for web page
+  file: path=/var/www/html/{{site_server_name}} state=directory
+- name: Create default page
+  template: src=index.html.j2 dest=/var/www/html/{{site_server_name}}/index.html owner=root group=root mode=0644
+
+- name: Create Apache configuration
+  template: src=wims_site.conf.j2 dest=/etc/apache2/sites-available/0_{{site_server_name}}.conf owner=root group=root mode=0644
+
+- name: Disable default site
+  command: a2dissite 000-default
+
+- name: Enable WIMS site
+  command: a2ensite 0_{{site_server_name}}
+
+- name: Reload Apache to take modifications into account
+  systemd:
+    name: apache2
+    enabled: yes
+    state: restarted
