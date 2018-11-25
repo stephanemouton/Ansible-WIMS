@@ -34,19 +34,19 @@ If necessary, change the following variables in `./roles/wims_install_wims/vars/
 Ansible scripts expect target server defined as 'wims' in host file
 
 Execute each Ansible script in order, using `ansible-playbook`
-* 0_base_configuration.yml
-* 1_third_party_apps.yml
-* 2_wims_users.yml
-* 3_install_wims_as_wims.yml
-* 4_install_wims_as_root.yml
+* `0_base_configuration.yml`
+* `1_third_party_apps.yml`
+* `2_wims_users.yml`
+* `3_install_wims_as_wims.yml`
+* `4_install_wims_as_root.yml`
 
 Optional
-* 5_web_configuration.yml : to setup a default web site and prepare Let's Encrypt HTTPS configuration
+* `5_web_configuration.yml`: to setup a default web site and prepare Let's Encrypt HTTPS configuration
     * As terms and conditions of Let's Encrypt must be agreed, the latter part is voluntarily left un automated
 
 ## Post install
 
-In the server administration page, perform the follwing changes
+In the server administration page, perform the following changes
 * For GAP on v4.16, replace `gap.sh -T -m 64M` by `gap -T -m 64M`.
     * Note: this could be automated if needed by adding line `gap_command=gap -T -m 64M` in /home/wims/log/wim.conf
 * Add contact for Data Protection Officer (DPO). Also scriptable by adding a line into wims.conf
