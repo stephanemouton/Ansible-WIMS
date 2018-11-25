@@ -1,8 +1,10 @@
 # Automated WIMS installation
 
-Target Linux distribution is Debian
+Target Linux distribution is Debian.
+
 Current supported version: Debian 9 (stretch)
-Ansible is used to code Deployment.Please read page like https://www.ansible.com/use-cases to know more about the benefits of using tools like Ansible, Chef, Puppet, Saltstack (etc.) instead of usual bash scripts to deploy and configure applications.
+
+Ansible is used to code Deployment. Please read pages like https://www.ansible.com/use-cases to know more about the benefits of using tools like Ansible, Chef, Puppet, Saltstack (etc.) instead of usual bash scripts to deploy and configure applications.
 
 Scripts have been tested on WIMS v4.1x
 
