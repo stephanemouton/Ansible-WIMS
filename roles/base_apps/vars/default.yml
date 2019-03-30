@@ -18,6 +18,10 @@
   - yacas
   - gap
   - maxima
+# required to execute type=formal in OEF
+# cf https://wiki.wimsedu.info/doku.php?id=installation:debian:manual
+# + error in maxima : file_search1: trgsmp.mac not found in file_search_maxima,system.
+  - maxima-share
   - octave
   - graphviz
   - ldap-utils
