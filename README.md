@@ -14,8 +14,8 @@ Scripts have been tested on WIMS v4.1x
 
 * Debian 9 (stretch)
 * Public key of source user account, in `authorized_keys2` file of root
-* Full domain name is already associated to the Ip address of target server
-* e-mail server configuration is out of scope of this script: either the target is already able to send e-mails (recommended) or configuration should be done after WIMS inwtallation
+* Full domain name is already associated to the IP address of target server
+* e-mail server configuration is out of scope of this script: either the target is already able to send e-mails (recommended) or configuration should be done after WIMS installation
 
 ### On the installation source
 
